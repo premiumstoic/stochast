@@ -1,0 +1,46 @@
+---
+title: Gaussian Baseline
+description: A constant rule produces the bell-curve baseline.
+order: 1
+---
+
+# Gaussian Baseline
+
+Start with the simplest possible rule:
+
+```txt
+p = 0.5
+```
+
+Every step is a fair coin flip. The agent does not remember the past. It does not react to its current state. The local rule stays constant from the first step to the last.
+
+That lack of memory is exactly what makes the global result so stable.
+
+## What To Look For
+
+When many agents run this rule in parallel, their individual paths look noisy, but the final distribution does not. Most agents finish near the center. Very few finish near the extremes.
+
+<SimulationWidget
+  mode="chapter"
+  lockedPresetId="gaussian"
+  fixedAgentCount={500}
+  fixedSteps={300}
+  showFormulaBar
+  caption="Constant probability. Individual trajectories wander, but the final histogram concentrates near the center."
+/>
+
+The path canvas shows short-term randomness. The histogram shows long-term regularity. That is the baseline mental model for the rest of Stochast:
+
+- local randomness can still produce a predictable macroscopic shape
+- the formula is the thing that chooses that shape
+- changing the formula changes the distribution
+
+## Why A Bell Curve Appears
+
+With `p = 0.5`, every agent is averaging many independent up/down decisions. As the number of steps grows, those averages cluster around `0.5`. The spread narrows, and the histogram becomes center-heavy.
+
+This is the regime of no memory and no reinforcement. It is the reference point for every later chapter.
+
+## What Changes Next
+
+The next step is to let the rule depend on the agent's own history. Instead of a fixed `0.5`, we will let the probability track the current state `x`. That one change is enough to flatten the bell curve into something completely different.

@@ -1,0 +1,26 @@
+# Next.js
+.next/
+out/
+output/
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+*.tsbuildinfo
+pnpm-debug.log*
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Local tooling
+.playwright-cli/
+.vercel/
+.claude/
+Google Gemini.webarchive
+CLAUDE.md
+
+# OS
+.DS_Store

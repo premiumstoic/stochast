@@ -1,0 +1,46 @@
+---
+title: Uniform Memory
+description: Path dependence turns the bell curve into a flat distribution.
+order: 2
+---
+
+# Uniform Memory
+
+Now replace the constant rule with a memory rule:
+
+```txt
+p = x
+```
+
+Here `x` is the current proportion of upward steps. If an agent has been drifting upward, it becomes slightly more likely to keep drifting upward. If it has been drifting downward, it becomes slightly more likely to keep drifting downward.
+
+This is the first real form of path dependence in the textbook.
+
+## The Shape It Produces
+
+Unlike the Gaussian baseline, this rule does not pull agents back to the center. It allows many different endings to remain plausible all the way through the run.
+
+<SimulationWidget
+  mode="chapter"
+  lockedPresetId="uniform"
+  fixedAgentCount={500}
+  fixedSteps={400}
+  showFormulaBar
+  caption="Linear memory. Trajectories fan out and the final histogram stays broadly flat across the range."
+/>
+
+The key visual difference is immediate:
+
+- Gaussian trajectories keep compressing toward the middle
+- Uniform-memory trajectories fan out and stay spread
+- the histogram becomes much flatter because many final values remain viable
+
+## Why It Feels Flat
+
+This rule behaves like a continuous version of Pólya's urn. The current state is a good estimate of the final state, so early differences tend to persist instead of washing out.
+
+That is why the final histogram looks approximately uniform. The system is not converging to one shared center anymore. It is preserving many possible futures at once.
+
+## What Changes Next
+
+The last locked chapter pushes this idea further. Instead of linear memory, we will use a nonlinear S-curve that rewards being ahead and punishes being behind. The center stops being neutral and starts becoming unstable.

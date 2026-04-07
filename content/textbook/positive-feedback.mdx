@@ -1,0 +1,53 @@
+---
+title: Positive-Feedback S-Curve
+description: Nonlinear reinforcement pushes trajectories to the edges.
+order: 3
+---
+
+# Positive-Feedback S-Curve
+
+The third launch rule adds reinforcement:
+
+```txt
+p = x^3 / (x^3 + (1-x)^3)
+```
+
+Near `x = 0.5`, the rule still looks balanced. But once an agent drifts slightly above the midpoint, the probability of moving up increases faster than before. Once it drifts below, the probability of moving up falls faster than before.
+
+Small differences stop being harmless. They get amplified.
+
+## The Result: Bifurcation
+
+This is where the center finally breaks.
+
+<SimulationWidget
+  mode="chapter"
+  lockedPresetId="positive-feedback"
+  fixedAgentCount={500}
+  fixedSteps={400}
+  showFormulaBar
+  showMetrics
+  caption="Positive feedback. Early advantages get amplified and the final histogram splits toward the edges."
+/>
+
+The path canvas shows agents separating early. The histogram shows the cumulative consequence: mass moves away from the middle and toward two competing extremes.
+
+This is the visual signature of positive feedback:
+
+- the midpoint becomes unstable
+- early luck matters much more
+- the final distribution becomes edge-heavy instead of center-heavy or flat
+
+## Why The Metrics Help
+
+This chapter is where the post-run metrics become especially useful. Bifurcation and convergence stop being abstract words and become measurements of what the chart is already showing: edge mass, early locking, and uneven occupancy.
+
+## Take The Training Wheels Off
+
+At this point the locked examples have done their job. You have seen the three launch regimes:
+
+- constant rule -> Gaussian baseline
+- linear memory -> uniform spread
+- nonlinear feedback -> bifurcation
+
+The next chapter is the handoff. Same engine, same visual language, but no preset lock.

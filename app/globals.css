@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Graphite (default) ─────────────────────────────────────────────────── */
+:root,
+[data-theme="graphite"] {
+  --color-background:       #111315;
+  --color-surface:          #171a1d;
+  --color-surface-muted:    #1e2226;
+  --color-border:           #2a2f35;
+  --color-text-primary:     #ece6dc;
+  --color-text-muted:       #6b7280;
+  --color-accent-primary:   #9fe870;
+  --color-accent-secondary: #61d0ff;
+  --color-chart-grid:       rgba(255, 255, 255, 0.06);
+  --color-chart-trajectory: rgba(97, 208, 255, 0.18);
+  --color-chart-histogram:  #9fe870;
+  --color-success:          #9fe870;
+  --color-warning:          #ffb347;
+  --color-error:            #ff6b6b;
+}
+
+/* ─── Terminal Amber ─────────────────────────────────────────────────────── */
+[data-theme="terminal-amber"] {
+  --color-background:       #14110d;
+  --color-surface:          #1c1712;
+  --color-surface-muted:    #231e17;
+  --color-border:           #35291a;
+  --color-text-primary:     #f0e2c6;
+  --color-text-muted:       #7a6a50;
+  --color-accent-primary:   #ffb347;
+  --color-accent-secondary: #ffd166;
+  --color-chart-grid:       rgba(255, 255, 255, 0.06);
+  --color-chart-trajectory: rgba(255, 209, 102, 0.18);
+  --color-chart-histogram:  #ffb347;
+  --color-success:          #a3c464;
+  --color-warning:          #ffd166;
+  --color-error:            #ff6b6b;
+}
+
+/* ─── Ice ────────────────────────────────────────────────────────────────── */
+[data-theme="ice"] {
+  --color-background:       #0f1418;
+  --color-surface:          #151d23;
+  --color-surface-muted:    #1b2530;
+  --color-border:           #243040;
+  --color-text-primary:     #e7f1f7;
+  --color-text-muted:       #5c7a8a;
+  --color-accent-primary:   #5dd4ff;
+  --color-accent-secondary: #8ff0c8;
+  --color-chart-grid:       rgba(255, 255, 255, 0.06);
+  --color-chart-trajectory: rgba(93, 212, 255, 0.18);
+  --color-chart-histogram:  #5dd4ff;
+  --color-success:          #8ff0c8;
+  --color-warning:          #ffd166;
+  --color-error:            #ff6b6b;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-ibm-plex-mono), monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent-primary) 22%, transparent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent-primary) 28%, transparent);
+  color: var(--color-text-primary);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 50;
+  transform: translateY(-200%);
+  border: 1px solid var(--color-accent-primary);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Long-form text in textbook uses IBM Plex Sans */
+.prose {
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+}
+
+/* ─── Chapter prose styles ───────────────────────────────────────────────── */
+.prose-chapter {
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-primary);
+}
+
+.prose-chapter h1 {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 2rem 0;
+  color: var(--color-text-primary);
+}
+
+.prose-chapter h2 {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 2.5rem 0 0.75rem 0;
+  color: var(--color-text-primary);
+}
+
+.prose-chapter h3 {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 2rem 0 0.5rem 0;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prose-chapter p {
+  margin: 0 0 1.25rem 0;
+}
+
+.prose-chapter strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.prose-chapter em {
+  font-style: italic;
+}
+
+.prose-chapter code {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.875em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.15em 0.4em;
+  color: var(--color-accent-primary);
+}
+
+.prose-chapter pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.prose-chapter pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+}
+
+.prose-chapter ul,
+.prose-chapter ol {
+  margin: 0 0 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose-chapter li {
+  margin-bottom: 0.4rem;
+}
+
+.prose-chapter a {
+  color: var(--color-accent-secondary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.15s;
+}
+
+.prose-chapter a:hover {
+  text-decoration-color: var(--color-accent-secondary);
+}
+
+.prose-chapter table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.prose-chapter th,
+.prose-chapter td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose-chapter th {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+/* SimulationWidget inside prose breaks out of the text column slightly */
+.prose-chapter figure {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+@media (max-width: 640px) {
+  .prose-chapter figure {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
