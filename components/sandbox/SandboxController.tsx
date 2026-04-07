@@ -25,7 +25,7 @@ export function SandboxController({ initialPresetId, initialThemeId }: SandboxCo
   const {
     getConfig, setStatus, setProgress, setRunId, setResult,
     setError, resetRun, resetPlayback, setTotalFrames,
-    presetId, formula, status, result, themeId, setPresetId, setFormula, setThemeId,
+    presetId, formula, status, result, setPresetId, setFormula, setThemeId,
   } = useSimulationStore()
 
   const controllerRef = useRef(getSimulationController())
@@ -36,10 +36,6 @@ export function SandboxController({ initialPresetId, initialThemeId }: SandboxCo
   useEffect(() => {
     return () => controllerRef.current.destroy()
   }, [])
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = themeId
-  }, [themeId])
 
   useEffect(() => {
     if (appliedQueryRef.current) return

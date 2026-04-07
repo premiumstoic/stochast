@@ -7,6 +7,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { chapters, getAdjacentChapters } from '@/lib/chapters'
 import { SimulationWidget } from '@/components/textbook/SimulationWidget'
 import { ChapterNav } from '@/components/textbook/ChapterNav'
+import { ThemeButton } from '@/components/ThemeButton'
 
 export async function generateStaticParams() {
   return chapters.map((c) => ({ chapter: c.slug }))
@@ -55,12 +56,15 @@ export default async function ChapterPage({ params }: { params: Promise<{ chapte
         <Link href="/" className="text-sm font-mono text-text-muted hover:text-text-primary transition-colors">
           stochast
         </Link>
-        <Link
-          href="/sandbox"
-          className="text-xs font-mono text-text-muted hover:text-accent-primary transition-colors border border-border px-3 py-1 hover:border-accent-primary"
-        >
-          sandbox →
-        </Link>
+        <div className="flex items-center gap-2">
+          <ThemeButton />
+          <Link
+            href="/sandbox"
+            className="text-xs font-mono text-text-muted hover:text-accent-primary transition-colors border border-border px-3 py-1 hover:border-accent-primary"
+          >
+            sandbox →
+          </Link>
+        </div>
       </header>
 
       <main

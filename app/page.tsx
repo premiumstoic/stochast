@@ -1,17 +1,21 @@
 import Link from 'next/link'
 import { chapters } from '@/lib/chapters'
+import { ThemeButton } from '@/components/ThemeButton'
 
 export default function TextbookIndexPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--color-background)', color: 'var(--color-text-primary)' }}>
       <header className="border-b border-border px-4 py-3 flex items-center justify-between md:px-6">
         <span className="text-sm font-mono text-text-primary">stochast</span>
-        <Link
-          href="/sandbox"
-          className="text-xs font-mono text-text-muted hover:text-accent-primary transition-colors border border-border px-3 py-1 hover:border-accent-primary"
-        >
-          sandbox →
-        </Link>
+        <div className="flex items-center gap-2">
+          <ThemeButton />
+          <Link
+            href="/sandbox"
+            className="text-xs font-mono text-text-muted hover:text-accent-primary transition-colors border border-border px-3 py-1 hover:border-accent-primary"
+          >
+            sandbox →
+          </Link>
+        </div>
       </header>
 
       <main id="main-content" className="max-w-2xl mx-auto px-4 py-12 md:px-6 md:py-16">
