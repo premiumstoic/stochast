@@ -14,6 +14,7 @@ export const themeOptions: ThemeOption[] = [
   { id: 'ice', label: 'Ice', appearance: 'dark' },
   { id: 'vellum', label: 'Vellum', appearance: 'light' },
   { id: 'blueprint', label: 'Blueprint', appearance: 'light' },
+  { id: 'ember', label: 'Ember', appearance: 'dark' },
 ]
 
 const themeIdSet = new Set<ThemeId>(themeOptions.map((theme) => theme.id))

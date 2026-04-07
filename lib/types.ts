@@ -84,7 +84,7 @@ export interface SimulationWidgetProps {
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 
-export type ThemeId = 'graphite' | 'terminal-amber' | 'ice' | 'vellum' | 'blueprint'
+export type ThemeId = 'graphite' | 'terminal-amber' | 'ice' | 'vellum' | 'blueprint' | 'ember'
 
 export interface ThemeTokens {
   id: ThemeId

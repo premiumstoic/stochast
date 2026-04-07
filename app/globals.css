@@ -93,6 +93,24 @@
   --color-error:            #cc4b4b;
 }
 
+/* ─── Ember ──────────────────────────────────────────────────────────────── */
+[data-theme="ember"] {
+  --color-background:       #150c0c;
+  --color-surface:          #1c1111;
+  --color-surface-muted:    #231616;
+  --color-border:           #3a2020;
+  --color-text-primary:     #f0e0e0;
+  --color-text-muted:       #8a6060;
+  --color-accent-primary:   #e87272;
+  --color-accent-secondary: #f0a070;
+  --color-chart-grid:       rgba(255, 255, 255, 0.06);
+  --color-chart-trajectory: rgba(240, 160, 112, 0.18);
+  --color-chart-histogram:  #e87272;
+  --color-success:          #7ec88a;
+  --color-warning:          #f0a070;
+  --color-error:            #ff5555;
+}
+
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 *,
 *::before,
@@ -106,7 +124,8 @@ html {
 
 html[data-theme="graphite"],
 html[data-theme="terminal-amber"],
-html[data-theme="ice"] {
+html[data-theme="ice"],
+html[data-theme="ember"] {
   color-scheme: dark;
 }
 
