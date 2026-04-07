@@ -57,6 +57,42 @@
   --color-error:            #ff6b6b;
 }
 
+/* ─── Vellum ─────────────────────────────────────────────────────────────── */
+[data-theme="vellum"] {
+  --color-background:       #f5f0e6;
+  --color-surface:          #ece4d6;
+  --color-surface-muted:    #e4dac9;
+  --color-border:           #c6b79f;
+  --color-text-primary:     #1d1913;
+  --color-text-muted:       #74695d;
+  --color-accent-primary:   #16835f;
+  --color-accent-secondary: #1b6ca8;
+  --color-chart-grid:       rgba(17, 24, 39, 0.09);
+  --color-chart-trajectory: rgba(27, 108, 168, 0.18);
+  --color-chart-histogram:  #16835f;
+  --color-success:          #16835f;
+  --color-warning:          #b7791f;
+  --color-error:            #c84c4c;
+}
+
+/* ─── Blueprint ──────────────────────────────────────────────────────────── */
+[data-theme="blueprint"] {
+  --color-background:       #edf4fb;
+  --color-surface:          #deebf4;
+  --color-surface-muted:    #d4e3ee;
+  --color-border:           #a6bccd;
+  --color-text-primary:     #142432;
+  --color-text-muted:       #5d7488;
+  --color-accent-primary:   #146fd6;
+  --color-accent-secondary: #0c8e7a;
+  --color-chart-grid:       rgba(20, 36, 50, 0.1);
+  --color-chart-trajectory: rgba(12, 142, 122, 0.18);
+  --color-chart-histogram:  #146fd6;
+  --color-success:          #0c8e7a;
+  --color-warning:          #c98412;
+  --color-error:            #cc4b4b;
+}
+
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 *,
 *::before,
@@ -65,8 +101,18 @@
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
+}
+
+html[data-theme="graphite"],
+html[data-theme="terminal-amber"],
+html[data-theme="ice"] {
+  color-scheme: dark;
+}
+
+html[data-theme="vellum"],
+html[data-theme="blueprint"] {
+  color-scheme: light;
 }
 
 body {

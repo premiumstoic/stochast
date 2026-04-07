@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google'
+import { defaultThemeId } from '@/lib/themes'
 import './globals.css'
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="graphite">
+    <html lang="en" data-theme={defaultThemeId}>
       <body className={`${ibmPlexMono.variable} ${ibmPlexSans.variable}`}>
         <a href="#main-content" className="skip-link">Skip to content</a>
         {children}

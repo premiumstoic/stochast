@@ -10,7 +10,7 @@ The sandbox is the first full product surface and the reusable source for later 
 This phase defines the sandbox page layout, formula bar behavior, control strip behavior, canvas composition, playback model, metrics placement, empty and error states, keyboard shortcuts, and responsive rules.
 
 ## Out Of Scope
-This phase does not define MDX chapter authoring, export rendering internals, or the exact metric formulas. It also does not require advanced theme customization beyond the three shipped themes.
+This phase does not define MDX chapter authoring, export rendering internals, or the exact metric formulas. It also does not require advanced theme customization beyond the curated shipped themes.
 
 ## Inputs / Dependencies
 This phase depends on [01-design-language.md](./01-design-language.md) for the visual system, [02-foundation.md](./02-foundation.md) for route and store boundaries, and [03-simulation-engine.md](./03-simulation-engine.md) for the worker contract and result shapes.

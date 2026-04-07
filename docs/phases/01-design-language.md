@@ -13,7 +13,7 @@ The design language is:
 - analytical, calm, technical, and non-salesy in tone
 - Monkeytype-inspired in its Minimalist Functionalism
 - Brutalist-Chic in restraint, not in ornamental aggression
-- dark-mode-first
+- dark-mode-first by default, with curated light alternates for daylight reading and export
 - content-as-UI, where formulas, charts, and metrics are the product surface
 
 ## Out Of Scope
@@ -27,7 +27,7 @@ This phase delivers:
 - the visual philosophy for all future UI work
 - the typography system
 - the theme token inventory
-- three shipped launch themes
+- five shipped themes
 - layout rules for textbook and sandbox
 - chart styling rules
 - component behavior rules
@@ -57,6 +57,7 @@ The typography system is:
 
 The base visual rules are:
 - dark-mode-first
+- light themes remain restrained, low-glare, and technical rather than bright or lifestyle-oriented
 - restrained chrome
 - chart accents hold the saturation
 - minimal borders
@@ -71,12 +72,14 @@ The shipped themes are:
 | Graphite | Default app theme | `#111315` | `#171a1d` | `#ece6dc` | `#9fe870` | `#61d0ff` |
 | Terminal Amber | Warm alternative | `#14110d` | `#1c1712` | `#f0e2c6` | `#ffb347` | `#ffd166` |
 | Ice | Cool analytical alternative | `#0f1418` | `#151d23` | `#e7f1f7` | `#5dd4ff` | `#8ff0c8` |
+| Vellum | Warm light reading theme | `#f5f0e6` | `#ece4d6` | `#1d1913` | `#16835f` | `#1b6ca8` |
+| Blueprint | Cool light analytical theme | `#edf4fb` | `#deebf4` | `#142432` | `#146fd6` | `#0c8e7a` |
 
 The canonical token structure is:
 
 ```ts
 export interface ThemeTokens {
-  id: 'graphite' | 'terminal-amber' | 'ice'
+  id: 'graphite' | 'terminal-amber' | 'ice' | 'vellum' | 'blueprint'
   background: string
   surface: string
   surfaceMuted: string
@@ -128,7 +131,7 @@ The keyboard rules are:
 
 The export-card direction is:
 - portrait `4:5` aspect ratio
-- dark field matching the active theme
+- field matching the active theme, whether dark or light
 - neon histogram as the visual centerpiece
 - raw formula rendered prominently in `IBM Plex Mono`
 - metrics strip below the main chart
@@ -147,7 +150,7 @@ The explicit anti-patterns are:
 - [ ] the product personality is explicitly defined as analytical, calm, technical, and non-salesy
 - [ ] `IBM Plex Mono` and `IBM Plex Sans` usage rules are locked
 - [ ] the color system is documented as dark-mode-first with restrained chrome and saturated chart accents
-- [ ] `Graphite`, `Terminal Amber`, and `Ice` are defined as launch themes
+- [ ] `Graphite`, `Terminal Amber`, `Ice`, `Vellum`, and `Blueprint` are defined as shipped themes
 - [ ] layout rules distinguish textbook and sandbox behavior
 - [ ] chart styling rules are concrete enough to guide implementation
 - [ ] keyboard shortcuts are defined as `Cmd/Ctrl+K`, `Space`, and `R`
@@ -160,7 +163,7 @@ During implementation, compare mockups and built UI against this document rather
 ## Risks / Open Questions
 The main risk is slowly sliding into a safe, generic dashboard aesthetic once components start accumulating. The mitigation is to review every new UI piece against the anti-pattern list before merging it.
 
-There are no unresolved design-direction questions in v1. Theme customization beyond the three shipped themes is intentionally deferred.
+There are no unresolved design-direction questions in v1. Theme customization beyond the shipped curated themes is intentionally deferred.
 
 ## Status Checklist
 - [x] design personality written

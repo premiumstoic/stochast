@@ -148,7 +148,7 @@ export interface SimulationWidgetProps {
 }
 
 export interface ThemeTokens {
-  id: 'graphite' | 'terminal-amber' | 'ice'
+  id: 'graphite' | 'terminal-amber' | 'ice' | 'vellum' | 'blueprint'
   background: string
   surface: string
   surfaceMuted: string

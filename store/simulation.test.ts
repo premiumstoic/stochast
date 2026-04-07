@@ -103,10 +103,10 @@ describe('simulation store', () => {
       isExportReady: true,
     })
 
-    useSimulationStore.getState().setThemeId('ice')
+    useSimulationStore.getState().setThemeId('vellum')
 
     const state = useSimulationStore.getState()
-    expect(state.themeId).toBe('ice')
+    expect(state.themeId).toBe('vellum')
     expect(state.status).toBe('complete')
     expect(state.result).toBe(result)
     expect(state.isExportReady).toBe(true)

@@ -1,15 +1,9 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { ThemeId } from '@/lib/types'
 import { launchPresets } from '@/lib/presets'
+import { themeOptions } from '@/lib/themes'
 import { useSimulationStore } from '@/store/simulation'
-
-const themeOptions: Array<{ id: ThemeId; label: string }> = [
-  { id: 'graphite', label: 'Graphite' },
-  { id: 'terminal-amber', label: 'Terminal Amber' },
-  { id: 'ice', label: 'Ice' },
-]
 
 interface CommandPaletteProps {
   open: boolean
@@ -120,13 +114,16 @@ export function CommandPalette({ open, canRun, onClose, onRun, onReset }: Comman
                   onClose()
                 }}
                 className={[
-                  'border px-3 py-2 text-left text-sm font-mono transition-colors',
+                  'flex items-center justify-between border px-3 py-2 text-left text-sm font-mono transition-colors',
                   themeId === theme.id
                     ? 'border-accent-primary text-accent-primary'
                     : 'border-border text-text-primary hover:border-accent-primary hover:text-accent-primary',
                 ].join(' ')}
               >
-                {theme.label}
+                <span>{theme.label}</span>
+                <span className="text-[10px] uppercase tracking-widest text-text-muted">
+                  {theme.appearance}
+                </span>
               </button>
             ))}
           </section>

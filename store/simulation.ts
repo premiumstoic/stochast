@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import type { SimulationConfig, SimulationResult, ThemeId } from '@/lib/types'
 import { defaultPreset } from '@/lib/presets'
+import { defaultThemeId } from '@/lib/themes'
 
 // ─── Run lifecycle ────────────────────────────────────────────────────────────
 
@@ -64,7 +65,7 @@ const initialConfigState: ConfigState = {
   histogramBins: 50,
   frameStride: 4,
   seed: 42,
-  themeId: 'graphite',
+  themeId: defaultThemeId,
 }
 
 // ─── Playback state ───────────────────────────────────────────────────────────

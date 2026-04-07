@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { SandboxController } from '@/components/sandbox/SandboxController'
 import type { ThemeId } from '@/lib/types'
+import { isThemeId } from '@/lib/themes'
 
 export const metadata: Metadata = {
   title: 'Sandbox',
@@ -23,10 +24,7 @@ export default async function SandboxPage({ searchParams }: SandboxPageProps) {
   const resolvedSearchParams = searchParams ? await searchParams : undefined
   const initialPresetId = resolvedSearchParams?.preset
   const theme = resolvedSearchParams?.theme
-  const initialThemeId: ThemeId | undefined =
-    theme === 'graphite' || theme === 'terminal-amber' || theme === 'ice'
-      ? theme
-      : undefined
+  const initialThemeId: ThemeId | undefined = isThemeId(theme) ? theme : undefined
 
   return <SandboxController initialPresetId={initialPresetId} initialThemeId={initialThemeId} />
 }

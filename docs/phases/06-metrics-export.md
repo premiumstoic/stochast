@@ -113,7 +113,7 @@ The theme-aware export requirements are:
 - [ ] the export is required to be theme-aware and typography-consistent
 
 ## Test Plan
-The metric verification pass should use synthetic distributions that are clearly center-heavy, uniform-like, and edge-heavy to confirm score directionality. The export verification pass should compare live app colors and typography against exported images under all three themes and confirm the `4:5` output aspect ratio.
+The metric verification pass should use synthetic distributions that are clearly center-heavy, uniform-like, and edge-heavy to confirm score directionality. The export verification pass should compare live app colors and typography against exported images under all shipped themes and confirm the `4:5` output aspect ratio.
 
 ## Risks / Open Questions
 The main risk is metric controversy if labels feel intuitive but formulas feel opaque. The mitigation is to keep the formulas stable, the UI explanations short, and the metric names consistent with what they actually measure.
