@@ -124,7 +124,10 @@ export function SandboxController({ initialPresetId, initialThemeId }: SandboxCo
   )
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'var(--color-background)' }}>
+    <div
+      className="min-h-screen flex flex-col lg:h-screen lg:overflow-hidden"
+      style={{ background: 'var(--color-background)' }}
+    >
       <header className="flex items-center justify-between px-4 py-3 border-b border-border md:px-6 flex-shrink-0">
         <span className="text-sm font-mono text-text-muted">
           <Link href="/" className="hover:text-text-primary transition-colors">stochast</Link>
@@ -191,12 +194,12 @@ export function SandboxController({ initialPresetId, initialThemeId }: SandboxCo
 
           <aside
             aria-label="Distribution summary"
-            className="order-3 lg:col-span-2 lg:row-start-3 xl:order-none xl:col-start-3 xl:row-span-2 xl:row-start-1 xl:flex xl:min-h-0 xl:flex-col xl:border-l xl:border-border"
+            className="order-3 lg:col-span-2 lg:row-start-3 xl:order-none xl:col-start-3 xl:row-span-2 xl:row-start-1 xl:flex xl:min-h-0 xl:flex-col xl:overflow-hidden xl:border-l xl:border-border"
           >
-            <div className="h-56 border-b border-border p-3 sm:h-64 xl:h-auto xl:min-h-0 xl:flex-1 xl:border-b-0">
+            <div className="h-56 border-b border-border p-3 sm:h-64 xl:h-56 xl:flex-none">
               <HistogramCanvas />
             </div>
-            <div className="border-t border-border p-3 xl:flex-shrink-0">
+            <div className="border-t border-border p-3 xl:min-h-0 xl:flex-1 xl:overflow-hidden">
               <MetricsRail />
             </div>
           </aside>

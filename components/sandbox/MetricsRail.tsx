@@ -73,63 +73,67 @@ export function MetricsRail() {
   const preset = result ? getPresetById(result.runMeta.presetId) : null
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 xl:h-full xl:min-h-0">
       <Metric label="Bifurcation" value={m?.bifurcationScore ?? null} />
       <Metric label="Convergence" value={m?.convergenceRate ?? null} />
       <Metric label="Gini" value={m ? m.giniCoefficient : null} digits={3} />
 
       {status === 'complete' && result && (
-        <div className="border border-border bg-surface p-3 mt-1">
-          <div className="flex items-center justify-between gap-3 pb-3 border-b border-border">
-            <div>
+        <div className="mt-1 border border-border bg-surface xl:min-h-0 xl:flex-1 xl:overflow-y-auto">
+          <div className="p-3">
+            <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
+              <div>
+                <div className="text-[11px] font-mono uppercase tracking-widest text-text-muted">
+                  Run Detail
+                </div>
+                <div className="mt-1 text-sm font-mono text-text-primary">
+                  {preset?.label ?? result.runMeta.presetId}
+                </div>
+              </div>
+              <div className="text-right text-[11px] font-mono text-text-muted tabular-nums">
+                {result.runMeta.agentCount.toLocaleString()} agents
+                <br />
+                {result.runMeta.steps} steps
+              </div>
+            </div>
+
+            <div className="mt-3 border border-border bg-background px-3 py-2">
               <div className="text-[11px] font-mono uppercase tracking-widest text-text-muted">
-                Run Detail
+                Formula
               </div>
-              <div className="mt-1 text-sm font-mono text-text-primary">
-                {preset?.label ?? result.runMeta.presetId}
+              <div className="mt-1 break-all text-sm font-mono text-accent-primary">
+                {result.runMeta.formula}
               </div>
             </div>
-            <div className="text-right text-[11px] font-mono text-text-muted tabular-nums">
-              {result.runMeta.agentCount.toLocaleString()} agents
-              <br />
-              {result.runMeta.steps} steps
-            </div>
-          </div>
 
-          <div className="mt-3 border border-border bg-background px-3 py-2">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-text-muted">
-              Formula
+            <div className="mt-3">
+              <DetailRow
+                label="Bifurcation"
+                value={`${result.metrics.bifurcationScore.toFixed(1)}%`}
+                note={`Final distribution reads as ${interpretBifurcation(result.metrics.bifurcationScore)}.`}
+              />
+              <DetailRow
+                label="Convergence"
+                value={`${result.metrics.convergenceRate.toFixed(1)}%`}
+                note={`Trajectories reached their final class with ${interpretConvergence(result.metrics.convergenceRate)}.`}
+              />
+              <DetailRow
+                label="Gini"
+                value={result.metrics.giniCoefficient.toFixed(3)}
+                note={`Bin occupancy shows ${interpretGini(result.metrics.giniCoefficient)} across the final histogram.`}
+              />
             </div>
-            <div className="mt-1 break-all text-sm font-mono text-accent-primary">
-              {result.runMeta.formula}
+
+            <div className="mt-3 border-t border-border pt-3 text-[11px] font-mono text-text-muted tabular-nums">
+              {result.runMeta.elapsedMs.toFixed(0)}ms worker time · {result.runMeta.histogramBins} bins · frame stride {result.runMeta.frameStride}
             </div>
-          </div>
-
-          <div className="mt-3">
-            <DetailRow
-              label="Bifurcation"
-              value={`${result.metrics.bifurcationScore.toFixed(1)}%`}
-              note={`Final distribution reads as ${interpretBifurcation(result.metrics.bifurcationScore)}.`}
-            />
-            <DetailRow
-              label="Convergence"
-              value={`${result.metrics.convergenceRate.toFixed(1)}%`}
-              note={`Trajectories reached their final class with ${interpretConvergence(result.metrics.convergenceRate)}.`}
-            />
-            <DetailRow
-              label="Gini"
-              value={result.metrics.giniCoefficient.toFixed(3)}
-              note={`Bin occupancy shows ${interpretGini(result.metrics.giniCoefficient)} across the final histogram.`}
-            />
-          </div>
-
-          <div className="mt-3 pt-3 border-t border-border text-[11px] font-mono text-text-muted tabular-nums">
-            {result.runMeta.elapsedMs.toFixed(0)}ms worker time · {result.runMeta.histogramBins} bins · frame stride {result.runMeta.frameStride}
           </div>
         </div>
       )}
 
-      <ExportButton />
+      <div className="xl:shrink-0">
+        <ExportButton />
+      </div>
     </div>
   )
 }
